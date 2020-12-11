@@ -27,8 +27,8 @@ public final class JDBC {
 
     private static JDBC instance = null;
 
-    private static final String DEFAULT_USERNAME = "admin";
-    private static final String DEFAULT_PASSWORD = "Corendon001";
+    private static final String DEFAULT_USERNAME = "root";
+    private static final String DEFAULT_PASSWORD = "admin";
     private static final String DEFAULT_DATABASE = "corendon";
     private static final String DEFAULT_HOST = "localhost";
     private static final int DEFAULT_PORT = 3306;
