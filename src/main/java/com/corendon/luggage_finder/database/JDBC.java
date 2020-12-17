@@ -103,7 +103,7 @@ public final class JDBC {
     public boolean connect(String username, String password,
             String host, int port, String databaseName, boolean allowMultiQueries, boolean debug) {
         try {
-            String connectionUrl = String.format("%s%s:%d/%s?serverTimezone=UTC&useSSL=false&allowMultiQueries=%b&&profileSQL=%b",
+            String connectionUrl = String.format("%s%s:%d/%s?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false&allowMultiQueries=%b&&profileSQL=%b",
                     DRIVER_PREFIX, host, port, databaseName, allowMultiQueries, debug);
 
             connection = DriverManager.getConnection(connectionUrl, username, password);
