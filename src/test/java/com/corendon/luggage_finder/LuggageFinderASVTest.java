@@ -5,15 +5,31 @@ import com.corendon.luggage_finder.database.tables.LuggagesTable;
 import com.corendon.luggage_finder.database.tables.UsersTable;
 import com.corendon.luggage_finder.model.*;
 import org.junit.*;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.internal.stubbing.answers.DoesNothing;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class LuggageFinderASVTest {
+
+    private List<Color> colors;
+    private List<Brand> brands;
+    private List<LuggageType> types;
+    private List<Airport> airports;
+    private List<Status> statuses;
+    private List<Insurance> insuranceCompanies;
+
+    private Passenger selectedPassenger;
 
     @BeforeClass
     public static void setUpClass() {
@@ -36,7 +52,7 @@ public class LuggageFinderASVTest {
     public void loginManager(){
         String username = "sjors", password = "wachtwoord";
 
-        // the expected result of the user with the manager's function.
+        // the information of the user with the manager's function.
         User expectedResult = new User(
                 "sjors",
                 "Sjors",
@@ -52,7 +68,7 @@ public class LuggageFinderASVTest {
         // where the queries are written
         UsersTable usersTable = Mockito.mock(UsersTable.class);
 
-        // passing in the test values and return the expected result
+        // passing in the test values for validation
         when(usersTable.login(username, password)).thenReturn(expectedResult);
         usersTable.login(username,password);
         System.out.println("Manager logs in successfully \nNavigate to statistics");
@@ -60,6 +76,81 @@ public class LuggageFinderASVTest {
         // verifying
         verify(usersTable, Mockito.times(1)).login(username,password);
     }
+
+    @Test
+    public void registerLuggage() throws ParseException {
+        // the information of the luggage with the will be registered.
+        Luggage luggageTest = getLuggageDetails();
+
+        // Configuring Mockito to mock the LuggagesTable class
+        LuggagesTable luggagesTable = Mockito.mock(LuggagesTable.class);
+
+        // passing in the test values for validation and returning true if success
+        when(luggagesTable.insert(luggageTest)).thenReturn(true);
+        luggagesTable.insert(luggageTest);
+
+        // verifying
+        verify(luggagesTable, Mockito.times(1)).insert(luggageTest);
+    }
+
+    @Test
+    public void updateLuggage() throws ParseException {
+        // the information of the luggage with the will be registered.
+        Luggage luggageTest = getLuggageDetails();
+
+        // Configuring Mockito to mock the LuggagesTable class
+        LuggagesTable luggagesTable = Mockito.mock(LuggagesTable.class);
+
+        // passing in the test values for validation and returning true if success
+        when(luggagesTable.insert(luggageTest)).thenReturn(true);
+        luggagesTable.update(luggageTest);
+
+        // verifying
+        verify(luggagesTable, Mockito.times(1)).update(luggageTest);
+    }
+
+    private Luggage getLuggageDetails() throws ParseException {
+        String registrationId = "123";
+
+        Airport airport = new Airport("Schiphol", new Country("NL", "Nederland"), 1, true);
+
+        LuggageType type = new LuggageType("Koffer", 1);
+
+        Color primaryColor = new Color("Geel",5555,25);
+
+        Color secondaryColor = new Color("Blue",6666,26);
+
+        Brand brand = new Brand("LV",1);
+
+        Status status = new Status("Lost",1);
+
+        Insurance insurance = new Insurance("ditzo", 1);
+
+        String dateStr = "2010-01-04 01:32:27 UTC";
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = format.parse(dateStr);
+
+        Integer length = Utils.parseInt("25");
+        Integer width = Utils.parseInt("25");
+        Integer height = Utils.parseInt("25");
+        Integer weight = Utils.parseInt("25");
+
+        String labelText = "555";
+        String characteristics = "Big bag";
+
+        // flight
+        String flightNumber = "555";
+        Flight flight = new Flight(flightNumber);
+
+        // label
+        Label label = new Label(labelText, flight);
+        selectedPassenger = new Passenger(1);
+
+        return new Luggage(registrationId, date, airport, type, brand, label,
+            status, width, length, height, weight, selectedPassenger,
+            characteristics, primaryColor, secondaryColor, insurance);
+    }
+
 
 
 }

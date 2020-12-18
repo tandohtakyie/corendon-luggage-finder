@@ -112,9 +112,16 @@ public class UtilsTest {
     @Test
     public void testSetActiveUser() {
         System.out.println("setActiveUser");
+
+        // The user assigned to be set as an active user
         User activeUser = new User("sjors", "Sjors", "de", "Snor", new Date(), "sjors@business.com", new Function("Manager"), new Date(), new Country("NL", "Nederland"), "wachtwoord", null, false);
+
+        // make the user an active user
         Utils.setActiveUser(activeUser);
+
+        // result holds the current status
         User result = Utils.getActiveUser();
+
         assertEquals(activeUser, result);
     }
 
