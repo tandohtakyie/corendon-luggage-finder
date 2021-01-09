@@ -141,19 +141,26 @@ public class PassengerModificationController implements Initializable {
         PassengersTable passengersTable = new PassengersTable();
 
         // Disgustingly nice pt.2
-        String firstName = firstNameTextField.getText().isEmpty()
+        String firstName = firstNameTextField.getText().isEmpty() && selectedPassenger != null
                 ? selectedPassenger.getFirstName() : firstNameTextField.getText();
+
         String preposition = prepositionTextField.getText();
-        String lastName = lastNameTextField.getText().isEmpty()
+
+        String lastName = lastNameTextField.getText().isEmpty() && selectedPassenger != null
                 ? selectedPassenger.getLastName() : lastNameTextField.getText();
-        String email = emailTextField.getText().isEmpty()
+
+        String email = emailTextField.getText().isEmpty() && selectedPassenger != null
                 ? selectedPassenger.getEmail() : emailTextField.getText();
-        String address = addressTextField.getText().isEmpty()
+
+        String address = addressTextField.getText().isEmpty() && selectedPassenger != null
                 ? selectedPassenger.getEmail() : addressTextField.getText();
-        String zipcode = areacodeTextField.getText().isEmpty()
+
+        String zipcode = areacodeTextField.getText().isEmpty() && selectedPassenger != null
                 ? selectedPassenger.getZipcode() : areacodeTextField.getText();
-        String city = cityTextField.getText().isEmpty()
+
+        String city = cityTextField.getText().isEmpty() && selectedPassenger != null
                 ? selectedPassenger.getCity() : cityTextField.getText();
+
         Country country = countries.get(countryChoiceBox.getSelectionModel().getSelectedIndex());
         // End chunk text
 
