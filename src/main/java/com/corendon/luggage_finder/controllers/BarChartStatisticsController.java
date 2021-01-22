@@ -184,8 +184,10 @@ public class BarChartStatisticsController implements Initializable {
                 break;
         }
 
-        for (Map.Entry<String, Number> entry : luggageStatuses.entrySet()) {
-            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        if(luggageStatuses != null){
+            for (Map.Entry<String, Number> entry : luggageStatuses.entrySet()) {
+                series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+            }
         }
 
         barChart.getData().setAll(series);
