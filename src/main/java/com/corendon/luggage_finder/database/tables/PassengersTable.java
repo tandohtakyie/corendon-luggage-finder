@@ -178,7 +178,7 @@ public class PassengersTable extends DatabaseTable<Passenger> {
      * @return if the insert operation succeeded
      */
     @Override
-    public boolean insert(Passenger passenger) {
+    public boolean insert(Passenger passenger) throws SQLException {
         String query = "INSERT INTO passengers (first_name, middle_name, last_name, address, postcode, city, country_id, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         return getJdbc().executeUpdateQuery(query,
@@ -200,7 +200,7 @@ public class PassengersTable extends DatabaseTable<Passenger> {
      * @return if the update operation succeeded
      */
     @Override
-    public boolean update(Passenger passenger) {
+    public boolean update(Passenger passenger) throws SQLException {
         String query = "UPDATE passengers SET first_name = ?, middle_name = ?, last_name = ?, address = ?, postcode = ?, city = ?, country_id = ?, email = ?, phone = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query,
@@ -223,7 +223,7 @@ public class PassengersTable extends DatabaseTable<Passenger> {
      * @return if the delete operation succeeded
      */
     @Override
-    public boolean delete(Passenger passenger) {
+    public boolean delete(Passenger passenger) throws SQLException {
         String query = "DELETE FROM passengers WHERE id = ?;";
         return getJdbc().executeUpdateQuery(query, passenger.getId());
     }

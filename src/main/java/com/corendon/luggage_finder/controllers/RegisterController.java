@@ -27,6 +27,7 @@ import javafx.stage.Window;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Date;
@@ -202,7 +203,7 @@ public class RegisterController implements Initializable {
      * @param event the event send from JavaFX
      */
     @FXML
-    void onSaveButtonAction(ActionEvent event) {
+    void onSaveButtonAction(ActionEvent event) throws SQLException {
         Luggage luggage = createLuggage();
 
         if (luggage.getLuggagetType() == null) {
@@ -248,7 +249,7 @@ public class RegisterController implements Initializable {
         // importing Excel
         try {
             Excel.fromExcel(file);
-        } catch (IOException | ParseException e) {
+        } catch (IOException | ParseException | SQLException e) {
             e.printStackTrace();
         }
     }

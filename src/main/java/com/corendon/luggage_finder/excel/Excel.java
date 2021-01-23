@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,7 +48,7 @@ public final class Excel {
      * @param file The excel file.
      * @return If the insert succeeded
      */
-    public static boolean fromExcel(File file) throws IOException, ParseException {
+    public static boolean fromExcel(File file) throws IOException, ParseException, SQLException {
         // reading excel file and getting first sheet
         FileInputStream inputStream = new FileInputStream(file);
         Workbook workbook = new XSSFWorkbook(inputStream);

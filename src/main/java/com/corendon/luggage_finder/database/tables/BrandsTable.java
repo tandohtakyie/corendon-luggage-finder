@@ -57,7 +57,7 @@ public class BrandsTable extends DatabaseTable<Brand> {
      * @return
      */
     @Override
-    public boolean insert(Brand brand) {
+    public boolean insert(Brand brand) throws SQLException {
         String query = "INSERT INTO brands (name) VALUES (?);";
 
         return getJdbc().executeUpdateQuery(query, brand.getName());
@@ -70,7 +70,7 @@ public class BrandsTable extends DatabaseTable<Brand> {
      * @return
      */
     @Override
-    public boolean update(Brand brand) {
+    public boolean update(Brand brand) throws SQLException {
         String query = "UPDATE brands SET name = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, brand.getName(), brand.getId());
@@ -83,7 +83,7 @@ public class BrandsTable extends DatabaseTable<Brand> {
      * @return
      */
     @Override
-    public boolean delete(Brand brand) {
+    public boolean delete(Brand brand) throws SQLException {
         String query = "DELETE FROM brands WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, brand.getId());

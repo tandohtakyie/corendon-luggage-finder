@@ -202,7 +202,7 @@ public class LuggagesTable extends DatabaseTable<Luggage> {
      * @return if the query succeeded
      */
     @Override
-    public boolean insert(Luggage luggage) {
+    public boolean insert(Luggage luggage) throws SQLException {
         String query = "INSERT INTO luggages (registration_id, date_found, luggage_type_id, "
                 + "brand_id, label_id, location_found_id, primary_color_id, secondary_color_id, "
                 + "size_width, size_length, size_height, weight, passenger_id, "
@@ -246,7 +246,7 @@ public class LuggagesTable extends DatabaseTable<Luggage> {
      * @return if the query succeeded
      */
     @Override
-    public boolean update(Luggage luggage) {
+    public boolean update(Luggage luggage) throws SQLException {
         String query = "UPDATE luggages SET registration_id = ?, date_found = ?, luggage_type_id = ?, "
                 + "brand_id= ?, label_id = ?, location_found_id = ?, primary_color = ?, secondary_color = ?, "
                 + "size_width = ?, size_length = ?, size_height = ?, weight = ?, passenger_id = ?, "
@@ -280,7 +280,7 @@ public class LuggagesTable extends DatabaseTable<Luggage> {
      * @return if the query succeeded
      */
     @Override
-    public boolean delete(Luggage luggage) {
+    public boolean delete(Luggage luggage) throws SQLException {
         String query = "DELETE FROM luggages WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, luggage.getId());

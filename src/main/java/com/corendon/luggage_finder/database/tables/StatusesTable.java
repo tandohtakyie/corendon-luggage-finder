@@ -58,7 +58,7 @@ public class StatusesTable extends DatabaseTable<Status> {
      * @return if the query succeeded
      */
     @Override
-    public boolean insert(Status status) {
+    public boolean insert(Status status) throws SQLException {
         String query = "INSERT INTO statuses(name) VALUES (?);";
 
         return getJdbc().executeUpdateQuery(query, status.getName());
@@ -72,7 +72,7 @@ public class StatusesTable extends DatabaseTable<Status> {
      * @return if the query succeeded
      */
     @Override
-    public boolean update(Status status) {
+    public boolean update(Status status) throws SQLException {
         String query = "UPDATE statuses SET name = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, status.getName(), status.getId());
@@ -86,7 +86,7 @@ public class StatusesTable extends DatabaseTable<Status> {
      * @return if the query succeeded
      */
     @Override
-    public boolean delete(Status status) {
+    public boolean delete(Status status) throws SQLException {
         String query = "DELETE FROM statuses WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, status.getId());

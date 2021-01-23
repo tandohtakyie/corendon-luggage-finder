@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -130,7 +131,7 @@ public class LuggageOpeningStatusController implements Initializable {
     }
 
     @FXML
-    private void onSaveButtonAction(ActionEvent action) {
+    private void onSaveButtonAction(ActionEvent action) throws SQLException {
 
         for (int i = 0; 1 < radioButtons.size(); i++) {
 

@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.internal.stubbing.answers.DoesNothing;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -76,7 +77,7 @@ public class LuggageFinderASVTest {
     }
 
     @Test
-    public void registerLuggage() throws ParseException {
+    public void registerLuggage() throws ParseException, SQLException {
         // the information of the luggage with the will be registered.
         Luggage luggageTest = getLuggageDetails();
 
@@ -92,7 +93,7 @@ public class LuggageFinderASVTest {
     }
 
     @Test
-    public void updateLuggage() throws ParseException {
+    public void updateLuggage() throws ParseException, SQLException {
         // the information of the luggage with the will be registered.
         Luggage luggageTest = getLuggageDetails();
 

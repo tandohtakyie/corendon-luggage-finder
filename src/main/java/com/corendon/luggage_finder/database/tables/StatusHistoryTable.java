@@ -90,7 +90,7 @@ public class StatusHistoryTable extends DatabaseTable<StatusHistory> {
      * @return
      */
     @Override
-    public boolean insert(StatusHistory entry) {
+    public boolean insert(StatusHistory entry) throws SQLException {
         String query = "INSERT INTO statuses_history (luggage_id,status_id) VALUES (?,?);";
 
         return getJdbc().executeUpdateQuery(query, entry.getLuggageId(), entry.getStatus().getId());
@@ -103,7 +103,7 @@ public class StatusHistoryTable extends DatabaseTable<StatusHistory> {
      * @return
      */
     @Override
-    public boolean update(StatusHistory entry) {
+    public boolean update(StatusHistory entry) throws SQLException {
         String query = "UPDATE statuses_history SET status_id = ? WHERE luggages_id = ?;";
 
         return getJdbc().executeUpdateQuery(query, entry.getStatus(), entry.getLuggageId());
@@ -116,7 +116,7 @@ public class StatusHistoryTable extends DatabaseTable<StatusHistory> {
      * @return
      */
     @Override
-    public boolean delete(StatusHistory entry) {
+    public boolean delete(StatusHistory entry) throws SQLException {
         String query = "DELETE FROM statuses_history WHERE luggages_id = ?;";
 
         return getJdbc().executeUpdateQuery(query, entry.getLuggageId());

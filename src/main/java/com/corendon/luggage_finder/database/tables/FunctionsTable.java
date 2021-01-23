@@ -55,7 +55,7 @@ public class FunctionsTable extends DatabaseTable<Function> {
      * @return Success.
      */
     @Override
-    public boolean insert(Function entry) {
+    public boolean insert(Function entry) throws SQLException {
         String query = "INSERT INTO functions (id, name) VALUES (?, ?);";
 
         return getJdbc().executeUpdateQuery(query, entry.getId(), entry.getName());
@@ -68,7 +68,7 @@ public class FunctionsTable extends DatabaseTable<Function> {
      * @return Success.
      */
     @Override
-    public boolean update(Function entry) {
+    public boolean update(Function entry) throws SQLException {
         String query = "UPDATE functions SET name = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, entry.getName(), entry.getId());
@@ -81,7 +81,7 @@ public class FunctionsTable extends DatabaseTable<Function> {
      * @return Success.
      */
     @Override
-    public boolean delete(Function entry) {
+    public boolean delete(Function entry) throws SQLException {
         String query = "DELETE FROM functions WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, entry.getId());

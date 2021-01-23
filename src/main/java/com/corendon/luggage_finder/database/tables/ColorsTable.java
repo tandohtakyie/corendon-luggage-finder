@@ -62,7 +62,7 @@ public class ColorsTable extends DatabaseTable<Color> {
      * @return if the insert operation succeeded
      */
     @Override
-    public boolean insert(Color color) {
+    public boolean insert(Color color) throws SQLException {
         String query = "INSERT INTO colors (name) VALUES (?);";
 
         return getJdbc().executeUpdateQuery(query, color.getName());
@@ -75,7 +75,7 @@ public class ColorsTable extends DatabaseTable<Color> {
      * @return if the update operation succeeded
      */
     @Override
-    public boolean update(Color color) {
+    public boolean update(Color color) throws SQLException {
         String query = "UPDATE colors SET name = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, color.getName(), color.getId());
@@ -88,7 +88,7 @@ public class ColorsTable extends DatabaseTable<Color> {
      * @return if the delete operation succeeded
      */
     @Override
-    public boolean delete(Color color) {
+    public boolean delete(Color color) throws SQLException {
         String query = "DELETE FROM colors WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, color.getId());

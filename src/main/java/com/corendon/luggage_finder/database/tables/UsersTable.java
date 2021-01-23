@@ -216,7 +216,7 @@ public class UsersTable extends DatabaseTable<User> {
      * @return Success.
      */
     @Override
-    public boolean insert(User entry) {
+    public boolean insert(User entry) throws SQLException {
         String query = "INSERT INTO users ("
                 + "username, first_name, middle_name, last_name, birth_date, email, "
                 + "function_id, employment_date, country_id, password, image, reset_password) "
@@ -245,7 +245,7 @@ public class UsersTable extends DatabaseTable<User> {
      * @return Success.
      */
     @Override
-    public boolean update(User entry) {
+    public boolean update(User entry) throws SQLException {
         String query = "UPDATE users SET username = ?, first_name = ?, middle_name = ?, "
                 + "last_name = ?, birth_date = ?, email = ?, function_id = ?, employment_date = ?,"
                 + "country_id = ?, password = ?, image = ?, reset_password = ? WHERE id = ?;";
@@ -274,7 +274,7 @@ public class UsersTable extends DatabaseTable<User> {
      * @return Success.
      */
     @Override
-    public boolean delete(User entry) {
+    public boolean delete(User entry) throws SQLException {
         String query = "DELETE FROM users WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, entry.getId());

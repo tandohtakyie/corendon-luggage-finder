@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -107,7 +108,7 @@ public class PassengerModificationController implements Initializable {
      * @param event
      */
     @FXML
-    private void onDeleteButtonAction(ActionEvent event) {
+    private void onDeleteButtonAction(ActionEvent event) throws SQLException {
         if (selectedPassenger == null) {
             // TODO cant delete non existing passenger
             return;
@@ -126,7 +127,7 @@ public class PassengerModificationController implements Initializable {
      * @param event
      */
     @FXML
-    private void onSaveButtonAction(ActionEvent event) {
+    private void onSaveButtonAction(ActionEvent event) throws SQLException {
         if (selectedPassenger == null
                 && !(Utils.isStringFilled(firstNameTextField.getText())
                 || Utils.isStringFilled(lastNameTextField.getText())

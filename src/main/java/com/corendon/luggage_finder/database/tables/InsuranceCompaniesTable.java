@@ -46,7 +46,7 @@ public class InsuranceCompaniesTable extends DatabaseTable<Insurance> {
     }
 
     @Override
-    public boolean insert(Insurance entry) {
+    public boolean insert(Insurance entry) throws SQLException {
         String query = "INSERT INTO insurance_companies (name) VALUES (?);";
 
         return getJdbc().executeUpdateQuery(query,
@@ -54,7 +54,7 @@ public class InsuranceCompaniesTable extends DatabaseTable<Insurance> {
     }
 
     @Override
-    public boolean update(Insurance entry) {
+    public boolean update(Insurance entry) throws SQLException {
         String query = "UPDATE inurance_companies SET name = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query,
@@ -63,7 +63,7 @@ public class InsuranceCompaniesTable extends DatabaseTable<Insurance> {
     }
 
     @Override
-    public boolean delete(Insurance entry) {
+    public boolean delete(Insurance entry) throws SQLException {
         String query = "DELETE FROM insurance_companies WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query,

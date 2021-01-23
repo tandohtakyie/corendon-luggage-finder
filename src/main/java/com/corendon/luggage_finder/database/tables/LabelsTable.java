@@ -68,7 +68,7 @@ public class LabelsTable extends DatabaseTable<Label> {
      * @return returns if the insert was succesful
      */
     @Override
-    public boolean insert(Label label) {
+    public boolean insert(Label label) throws SQLException {
         String query = "INSTER INTO labels (id, tag, flights_id) VALUES (?, ?, ?)";
         return getJdbc().executeUpdateQuery(query,
                 label.getId(),
@@ -83,7 +83,7 @@ public class LabelsTable extends DatabaseTable<Label> {
      * @return returns the updated query if it succeeded
      */
     @Override
-    public boolean update(Label label) {
+    public boolean update(Label label) throws SQLException {
         String query = "UPDATE labels SET id = ?, tag = ?, flights_id = ? WHERE id = ?;";
         return getJdbc().executeUpdateQuery(query,
                 label.getId(),
@@ -99,7 +99,7 @@ public class LabelsTable extends DatabaseTable<Label> {
      * @return returns the updated query if it succeeded
      */
     @Override
-    public boolean delete(Label label) {
+    public boolean delete(Label label) throws SQLException {
         String query = "DELETE FROM labels WHERE id = ?;";
         return getJdbc().executeUpdateQuery(query, label.getId());
     }

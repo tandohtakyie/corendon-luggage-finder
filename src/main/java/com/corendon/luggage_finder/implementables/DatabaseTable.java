@@ -8,6 +8,7 @@ package com.corendon.luggage_finder.implementables;
 
 import com.corendon.luggage_finder.database.JDBC;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -52,7 +53,7 @@ public abstract class DatabaseTable<T extends DatabaseEntry> {
      * @param entry the entry to be updated
      * @return if the query succeeded
      */
-    public abstract boolean insert(T entry);
+    public abstract boolean insert(T entry) throws SQLException;
 
     /**
      * This method should implemented a UPDATE query to the corresponding table.
@@ -60,7 +61,7 @@ public abstract class DatabaseTable<T extends DatabaseEntry> {
      * @param entry the entry to be inserted
      * @return if the query succeeded
      */
-    public abstract boolean update(T entry);
+    public abstract boolean update(T entry) throws SQLException;
 
     /**
      * This method should implemented a DELETE query to the corresponding table.
@@ -68,5 +69,5 @@ public abstract class DatabaseTable<T extends DatabaseEntry> {
      * @param entry the entry to be deleted
      * @return if the query succeeded
      */
-    public abstract boolean delete(T entry);
+    public abstract boolean delete(T entry) throws SQLException;
 }

@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -146,7 +147,7 @@ public class UserModificationDetailsTabController implements Initializable {
     }
 
     @FXML
-    private void onSaveButtonAction(ActionEvent event) {
+    private void onSaveButtonAction(ActionEvent event) throws SQLException {
         if (selectedUser == null
                 && !(Utils.isStringFilled(usernameTextField.getText())
                 || Utils.isStringFilled(passwordField.getText())

@@ -61,7 +61,7 @@ public class FlightsTable extends DatabaseTable<Flight> {
      * @return returns if the insert was succesful
      */
     @Override
-    public boolean insert(Flight flight) {
+    public boolean insert(Flight flight) throws SQLException {
         String query = "INSERT INTO flights (id, flightnumber) VALUE (?, ?)";
         return getJdbc().executeUpdateQuery(query,
                 flight.getId(),
@@ -75,7 +75,7 @@ public class FlightsTable extends DatabaseTable<Flight> {
      * @return returns the updated information if it succeded
      */
     @Override
-    public boolean update(Flight flight) {
+    public boolean update(Flight flight) throws SQLException {
         String query = "UPDATE flights SET id = ?, flightnumber = ?) WHERE id = ?;";
         return getJdbc().executeUpdateQuery(query,
                 flight.getId(),
@@ -91,7 +91,7 @@ public class FlightsTable extends DatabaseTable<Flight> {
      * @return returns the updated query if it succeeded
      */
     @Override
-    public boolean delete(Flight flight) {
+    public boolean delete(Flight flight) throws SQLException {
         String query = "DELETE FROM flights WHERE id =?;";
         return getJdbc().executeUpdateQuery(query, flight.getId());
     }

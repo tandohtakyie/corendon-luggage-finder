@@ -110,7 +110,7 @@ public class AirportsTable extends DatabaseTable<Airport> {
      * @return if the insert operation succeeded
      */
     @Override
-    public boolean insert(Airport airport) {
+    public boolean insert(Airport airport) throws SQLException {
         String query = "INSERT INTO airports (name, country_id, timezone, daylight_saving) VALUES (?, ?, ?, ?);";
 
         return getJdbc().executeUpdateQuery(query,
@@ -127,7 +127,7 @@ public class AirportsTable extends DatabaseTable<Airport> {
      * @return if the update operation succeeded
      */
     @Override
-    public boolean update(Airport airport) {
+    public boolean update(Airport airport) throws SQLException {
         String query = "UPDATE airports SET name = ?, country_id = ?, timezone = ?, daylight_saving = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query,
@@ -145,7 +145,7 @@ public class AirportsTable extends DatabaseTable<Airport> {
      * @return if the delete operation succeeded
      */
     @Override
-    public boolean delete(Airport airport) {
+    public boolean delete(Airport airport) throws SQLException {
         String query = "DELETE FROM airports WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, airport.getId());

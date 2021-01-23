@@ -59,7 +59,7 @@ public class LuggageTypesTable extends DatabaseTable<LuggageType> {
      * @return if the insert operation succeeded
      */
     @Override
-    public boolean insert(LuggageType luggageType) {
+    public boolean insert(LuggageType luggageType) throws SQLException {
 
         String query = "INSERT INTO luggage_types (name) VALUES (?);";
         return getJdbc().executeUpdateQuery(query, luggageType.getName());
@@ -73,7 +73,7 @@ public class LuggageTypesTable extends DatabaseTable<LuggageType> {
      * @return if the update operation succeeded
      */
     @Override
-    public boolean update(LuggageType luggageType) {
+    public boolean update(LuggageType luggageType) throws SQLException {
         String query = "UPDATE luggage_types SET name = ? WHERE id = ?;";
         return getJdbc().executeUpdateQuery(query, luggageType.getName(), luggageType.getId());
     }
@@ -86,7 +86,7 @@ public class LuggageTypesTable extends DatabaseTable<LuggageType> {
      * @return if the delete operation succeeded
      */
     @Override
-    public boolean delete(LuggageType luggageType) {
+    public boolean delete(LuggageType luggageType) throws SQLException {
         String query = "DELETE FROM luggage_types WHERE id = ?;";
         return getJdbc().executeUpdateQuery(query, luggageType.getId());
     }

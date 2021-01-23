@@ -56,7 +56,7 @@ public class CountriesTable extends DatabaseTable<Country> {
      * @return Success.
      */
     @Override
-    public boolean insert(Country entry) {
+    public boolean insert(Country entry) throws SQLException {
         String query = "INSERT INTO countries (code, name) VALUES (?, ?);";
 
         return getJdbc().executeUpdateQuery(query, entry.getCode(), entry.getName());
@@ -69,7 +69,7 @@ public class CountriesTable extends DatabaseTable<Country> {
      * @return Success.
      */
     @Override
-    public boolean update(Country entry) {
+    public boolean update(Country entry) throws SQLException {
         String query = "UPDATE countries SET code = ?, name = ? WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, entry.getCode(), entry.getName(), entry.getId());
@@ -82,7 +82,7 @@ public class CountriesTable extends DatabaseTable<Country> {
      * @return Success.
      */
     @Override
-    public boolean delete(Country entry) {
+    public boolean delete(Country entry) throws SQLException {
         String query = "DELETE FROM countries WHERE id = ?;";
 
         return getJdbc().executeUpdateQuery(query, entry.getId());
