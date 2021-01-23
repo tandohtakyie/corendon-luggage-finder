@@ -6,7 +6,6 @@
  */
 package com.corendon.luggage_finder;
 
-import com.corendon.luggage_finder.database.tables.FunctionsTable;
 import com.corendon.luggage_finder.implementables.DatabaseEntry;
 import com.corendon.luggage_finder.model.User;
 import javafx.fxml.FXMLLoader;

@@ -110,7 +110,7 @@ public class PassengerModificationController implements Initializable {
     @FXML
     private void onDeleteButtonAction(ActionEvent event) throws SQLException {
         if (selectedPassenger == null) {
-            // TODO cant delete non existing passenger
+
             return;
         }
 
@@ -135,7 +135,7 @@ public class PassengerModificationController implements Initializable {
                 || Utils.isStringFilled(areacodeTextField.getText())
                 || countryChoiceBox.getValue() != null)) {
 
-            System.out.println("Not saved");
+            System.err.println("Not saved");
             return;
         }
 

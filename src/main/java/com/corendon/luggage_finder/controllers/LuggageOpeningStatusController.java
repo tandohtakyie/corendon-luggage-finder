@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
  */
 public class LuggageOpeningStatusController implements Initializable {
 
-    //declaring the fxml:id attributes;
+
     @FXML
     private Label baggageIdLabel;
 
@@ -112,7 +112,7 @@ public class LuggageOpeningStatusController implements Initializable {
     private void setupResultTableView() {
         //making the columns for the status history table
         TableColumn<StatusHistory, String> dateColumn = new TableColumn<>(bundle.getString("luggage_opening_status_history_column_date"));
-        dateColumn.setCellValueFactory((param) -> {
+        dateColumn.setCellValueFactory(param -> {
             StatusHistory historyStatus = param.getValue();
             String timeStamp = Utils.dateToString(historyStatus.getCreated());
 
@@ -120,7 +120,7 @@ public class LuggageOpeningStatusController implements Initializable {
         });
 
         TableColumn<StatusHistory, String> stateColumn = new TableColumn<>(bundle.getString("luggage_opening_status_history_column_status"));
-        stateColumn.setCellValueFactory((param) -> {
+        stateColumn.setCellValueFactory(param -> {
             StatusHistory historyStatus = param.getValue();
             String status = historyStatus.getStatus().getName();
 

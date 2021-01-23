@@ -191,6 +191,7 @@ public class RegisterController implements Initializable {
         }
     }
 
+    // to print
     @FXML
     void onPrintFormButtonAction(ActionEvent event) {
 
@@ -232,7 +233,7 @@ public class RegisterController implements Initializable {
         fileChooser.getExtensionFilters().addAll(pngFilter, jpgFilter);
 
         Window window = ((Node) event.getTarget()).getScene().getWindow();
-        File file = fileChooser.showOpenDialog(window);
+        fileChooser.showOpenDialog(window);
     }
 
     @FXML

@@ -94,6 +94,7 @@ public class LuggageOpeningInfoController implements Initializable {
 
     private Luggage selectedLuggage;
 
+    // Initializes the controller class.
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }

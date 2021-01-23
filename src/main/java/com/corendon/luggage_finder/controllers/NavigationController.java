@@ -56,9 +56,8 @@ public class NavigationController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public  void initialize(URL url, ResourceBundle rb) {
         changeContentNode("home.fxml");
-        instance = this;
 
         // Create image clip
         float imgClipRad = (float) (userImage.getFitWidth() < userImage.getFitHeight()

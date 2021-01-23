@@ -268,13 +268,13 @@ public class SearchController implements Initializable {
      */
     private void setupResultsTableView() {
         TableColumn<Luggage, String> idColumn = new TableColumn<>(bundle.getString("search_table_id"));
-        idColumn.setCellValueFactory((value) -> {
+        idColumn.setCellValueFactory(value -> {
             String registrationId = value.getValue().getRegistrationId();
             return new SimpleStringProperty(registrationId);
         });
 
         TableColumn<Luggage, String> statusColumn = new TableColumn<>(bundle.getString("search_table_status"));
-        statusColumn.setCellValueFactory((value) -> {
+        statusColumn.setCellValueFactory(value -> {
             if (value.getValue().getMostRecentStatus() == null) {
                 return new SimpleStringProperty(bundle.getString("search_table_unknown_value"));
             }
@@ -284,7 +284,7 @@ public class SearchController implements Initializable {
         });
 
         TableColumn<Luggage, String> lastChangeColumn = new TableColumn<>(bundle.getString("search_table_last_change"));
-        lastChangeColumn.setCellValueFactory((value) -> {
+        lastChangeColumn.setCellValueFactory(value -> {
             if (value.getValue().getMostRecentStatus().getCreated() == null) {
                 return new SimpleStringProperty(bundle.getString("search_table_unknown_value"));
             }
@@ -295,7 +295,7 @@ public class SearchController implements Initializable {
         });
 
         TableColumn<Luggage, String> typeColumn = new TableColumn<>(bundle.getString("search_table_type"));
-        typeColumn.setCellValueFactory((value) -> {
+        typeColumn.setCellValueFactory(value -> {
             if (value.getValue().getLuggagetType() == null) {
                 return new SimpleStringProperty(bundle.getString("search_table_unknown_value"));
             }
@@ -305,7 +305,7 @@ public class SearchController implements Initializable {
         });
 
         TableColumn<Luggage, String> primaryColorColumn = new TableColumn<>(bundle.getString("search_table_primary_color"));
-        primaryColorColumn.setCellValueFactory((value) -> {
+        primaryColorColumn.setCellValueFactory(value -> {
             if (value.getValue().getPrimaryColor() == null) {
                 return new SimpleStringProperty(bundle.getString("search_table_unknown_value"));
             }
@@ -315,7 +315,7 @@ public class SearchController implements Initializable {
         });
 
         TableColumn<Luggage, String> secondaryColorColumn = new TableColumn<>(bundle.getString("search_table_secondary_color"));
-        secondaryColorColumn.setCellValueFactory((value) -> {
+        secondaryColorColumn.setCellValueFactory(value -> {
             if (value.getValue().getSecondaryColor() == null) {
                 return new SimpleStringProperty(bundle.getString("search_table_unknown_value"));
             }
@@ -325,7 +325,7 @@ public class SearchController implements Initializable {
         });
         
                 TableColumn<Luggage, String> insuranceCompanyColumn = new TableColumn<>(bundle.getString("search_table_insurance"));
-        insuranceCompanyColumn.setCellValueFactory((value) -> {
+        insuranceCompanyColumn.setCellValueFactory(value -> {
             if (value.getValue().getInsurance()== null) {
                 return new SimpleStringProperty(bundle.getString("search_table_unknown_value"));
             }

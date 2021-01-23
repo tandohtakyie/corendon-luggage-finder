@@ -169,22 +169,22 @@ public class PassengerSearchController implements Initializable {
     private void setupTableView() {
         TableColumn<Passenger, String> nameColumn = new TableColumn<>(bundle.getString("passenger_search_results_column_name"));
 
-        nameColumn.setCellValueFactory((param)
+        nameColumn.setCellValueFactory(param
                 -> new SimpleStringProperty(param.getValue().getFirstName()
                         + " " + param.getValue().getMiddleName()
                         + " " + param.getValue().getLastName()));
 
         TableColumn<Passenger, String> addressColumn = new TableColumn<>(bundle.getString("passenger_search_results_column_address"));
-        addressColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getAddress()));
+        addressColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getAddress()));
 
         TableColumn<Passenger, String> zipcodeColumn = new TableColumn<>(bundle.getString("passenger_search_results_column_zip_code"));
-        zipcodeColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getZipcode()));
+        zipcodeColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
 
         TableColumn<Passenger, String> cityColumn = new TableColumn<>(bundle.getString("passenger_search_results_column_city"));
-        cityColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getCity()));
+        cityColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
 
         TableColumn<Passenger, String> countryColumn = new TableColumn<>(bundle.getString("passenger_search_results_column_country"));
-        countryColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getCountry().getName()));
+        countryColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCountry().getName()));
 
         tableview.getColumns().setAll(nameColumn, addressColumn, zipcodeColumn, cityColumn, countryColumn);
         tableview.setItems(resultsList);
