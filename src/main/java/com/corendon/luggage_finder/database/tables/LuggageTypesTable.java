@@ -31,7 +31,7 @@ public class LuggageTypesTable extends DatabaseTable<LuggageType> {
     public List<LuggageType> getAll(int size) {
         String query = "SELECT id, name FROM luggage_types LIMIT ?;";
 
-        List<LuggageType> luggage_types = new ArrayList<>();
+        List<LuggageType> luggageTypes = new ArrayList<>();
 
         // executing query
         try (ResultSet rs = getJdbc().executeSelectQuery(query, size)) {
@@ -41,14 +41,14 @@ public class LuggageTypesTable extends DatabaseTable<LuggageType> {
                 String name = rs.getString("name");
 
                 LuggageType luggageType = new LuggageType(name, id);
-                luggage_types.add(luggageType);
+                luggageTypes.add(luggageType);
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return luggage_types;
+        return luggageTypes;
     }
 
     /**

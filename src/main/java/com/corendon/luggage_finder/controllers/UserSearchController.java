@@ -151,22 +151,22 @@ public class UserSearchController implements Initializable {
     private void setupResultsTableView() {
         TableColumn<User, String> nameColumn = new TableColumn<>(bundle.getString("users_results_column_name"));
 
-        nameColumn.setCellValueFactory((param)
+        nameColumn.setCellValueFactory(param
                 -> new SimpleStringProperty(param.getValue().getFirstName()
                         + " " + param.getValue().getNamePreposition()
                         + " " + param.getValue().getSurname()));
 
         TableColumn<User, String> functionColumn = new TableColumn<>(bundle.getString("users_results_column_function"));
-        functionColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getFunction().getName()));
+        functionColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFunction().getName()));
 
         TableColumn<User, String> ageColumn = new TableColumn<>(bundle.getString("users_results_column_age"));
-        ageColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getBirthDate().toString()));
+        ageColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getBirthDate().toString()));
 
         TableColumn<User, String> recruitmentColumn = new TableColumn<>(bundle.getString("users_results_column_enlistment"));
-        recruitmentColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getEmploymentDate().toString()));
+        recruitmentColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEmploymentDate().toString()));
 
         TableColumn<User, String> locationColumn = new TableColumn<>(bundle.getString("users_results_column_location"));
-        locationColumn.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getDepartmentLocation().getName()));
+        locationColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDepartmentLocation().getName()));
 
         tableview.getColumns().setAll(nameColumn, functionColumn, ageColumn, recruitmentColumn, locationColumn);
         tableview.setItems(resultsList);

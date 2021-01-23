@@ -31,18 +31,27 @@ import org.junit.BeforeClass;
  */
 public class UtilsTest {
 
+    /**
+     * before class is set up
+     */
     @BeforeClass
     public static void setUpClass() {
     }
-
+    /**
+     * after class is set up
+     */
     @AfterClass
     public static void tearDownClass() {
     }
-
+    /**
+     * before class is set up
+     */
     @Before
     public void setUp() {
     }
-
+    /**
+     * after class is set up
+     */
     @After
     public void tearDown() {
     }
@@ -69,7 +78,7 @@ public class UtilsTest {
     @Test
     public void testLocalDateToDate() {
         try {
-            System.out.println("localDateToDate");
+            System.err.println("localDateToDate");
             LocalDate localDate = LocalDate.now();
 
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -87,7 +96,7 @@ public class UtilsTest {
      */
     @Test
     public void testDateToLocalDate() {
-        System.out.println("dateToLocalDate");
+        System.err.println("dateToLocalDate");
         Date date = new Date();
         LocalDate expResult = LocalDate.now();
         LocalDate result = Utils.dateToLocalDate(date);
@@ -99,7 +108,7 @@ public class UtilsTest {
      */
     @Test
     public void testGetActiveUser() {
-        System.out.println("getActiveUser");
+        System.err.println("getActiveUser");
         User expResult = new User("sjors", "Sjors", "de", "Snor", new Date(), "sjors@business.com", new Function("Manager"), new Date(), new Country("NL", "Nederland"), "wachtwoord", null, false);
         Utils.setActiveUser(expResult);
         User result = Utils.getActiveUser();
@@ -111,7 +120,7 @@ public class UtilsTest {
      */
     @Test
     public void testSetActiveUser() {
-        System.out.println("setActiveUser");
+        System.err.println("setActiveUser");
 
         // The user assigned to be set as an active user
         User activeUser = new User("sjors", "Sjors", "de", "Snor", new Date(), "sjors@business.com", new Function("Manager"), new Date(), new Country("NL", "Nederland"), "wachtwoord", null, false);
@@ -130,7 +139,7 @@ public class UtilsTest {
      */
     @Test
     public void testIsStringFilled() {
-        System.out.println("isStringFilled");
+        System.err.println("isStringFilled");
         String string = "";
         boolean expResult = false;
         boolean result = Utils.isStringFilled(string);
@@ -152,7 +161,7 @@ public class UtilsTest {
      */
     @Test
     public void testDateToString() {
-        System.out.println("dateToString");
+        System.err.println("dateToString");
         Date date = new Date(1000);
         String expResult = "01/01/1970 01:00:01";
         String result = Utils.dateToString(date);
@@ -164,7 +173,7 @@ public class UtilsTest {
      */
     @Test
     public void testGetOrNull() {
-        System.out.println("getOrNull");
+        System.err.println("getOrNull");
 
         List<Object> entryList = new ArrayList<>();
         entryList.add(new Object());
@@ -183,7 +192,7 @@ public class UtilsTest {
      */
     @Test
     public void testGetIdOrNull() {
-        System.out.println("getIdOrNull");
+        System.err.println("getIdOrNull");
         DatabaseEntry entry = new Color("Red", 3024, 1);
         Integer expResult = 1;
         Integer result = Utils.getIdOrNull(entry);
@@ -199,7 +208,7 @@ public class UtilsTest {
      */
     @Test
     public void dateToTimeString() {
-        System.out.println("dateToTimeString");
+        System.err.println("dateToTimeString");
 
         Date date = new Date(1000);
         String expResult = "01:00";
@@ -212,7 +221,7 @@ public class UtilsTest {
      */
     @Test
     public void testGetCurrentLocale() {
-        System.out.println("getCurrentLocale");
+        System.err.println("getCurrentLocale");
         Locale expResult = new Locale("en", "EN");
         Locale result = Utils.getCurrentLocale();
         assertEquals(expResult, result);
@@ -223,7 +232,7 @@ public class UtilsTest {
      */
     @Test
     public void testGetLanguageBundle() {
-        System.out.println("getLanguageBundle");
+        System.err.println("getLanguageBundle");
         ResourceBundle expResult = ResourceBundle.getBundle("bundles.lang", getCurrentLocale());
         ResourceBundle result = Utils.getLanguageBundle();
         assertEquals(expResult, result);
@@ -234,7 +243,7 @@ public class UtilsTest {
      */
     @Test
     public void testCreateLoader() {
-        System.out.println("createLoader");
+        System.err.println("createLoader");
         String screenFile = "/screens/home.fxml";
         FXMLLoader result = Utils.createLoader(screenFile);
         assertNotEquals(result.getResources(), null);
@@ -245,7 +254,7 @@ public class UtilsTest {
      */
     @Test
     public void testDateToTimeString() {
-        System.out.println("dateToTimeString");
+        System.err.println("dateToTimeString");
         Date date = new Date(1000);
         String expResult = "01:00";
         String result = Utils.dateToTimeString(date);

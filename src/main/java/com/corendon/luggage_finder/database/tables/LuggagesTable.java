@@ -28,7 +28,7 @@ import java.util.List;
 public class LuggagesTable extends DatabaseTable<Luggage> {
 
     public LuggagesTable() {
-        System.out.println(getSelectQuery());
+        System.err.println(getSelectQuery());
     }
 
 

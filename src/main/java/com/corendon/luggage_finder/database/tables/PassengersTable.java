@@ -94,28 +94,7 @@ public class PassengersTable extends DatabaseTable<Passenger> {
         searchString += "%";
 
         try (ResultSet rs = getJdbc().executeSelectQuery(query, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString)) {
-            while (rs != null && rs.next()) {
-                int id = rs.getInt("passenger_id");
-
-                int countryId = rs.getInt("country_id");
-                String countryCode = rs.getString("country_code");
-                String countryName = rs.getString("country_name");
-
-                Country country = new Country(countryCode, countryName, countryId);
-
-                String first_name = rs.getString("first_name");
-                String middle_name = rs.getString("middle_name");
-                String last_name = rs.getString("last_name");
-                String address = rs.getString("address");
-                String zipcode = rs.getString("postcode");
-                String city = rs.getString("city");
-                String email = rs.getString("email");
-                String phone = rs.getString("phone");
-
-                Passenger passenger = new Passenger(first_name, middle_name, last_name, address, zipcode, city, country, email, phone, id);
-
-                passengers.add(passenger);
-            }
+            checkNullOrNext(passengers, rs);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -141,34 +120,38 @@ public class PassengersTable extends DatabaseTable<Passenger> {
         List<Passenger> passengers = new ArrayList<>();
 
         try (ResultSet rs = getJdbc().executeSelectQuery(query, size)) {
-            while (rs != null && rs.next()) {
-                int id = rs.getInt("passenger_id");
-
-                int countryId = rs.getInt("country_id");
-                String countryCode = rs.getString("country_code");
-                String countryName = rs.getString("country_name");
-
-                Country country = new Country(countryCode, countryName, countryId);
-
-                String first_name = rs.getString("first_name");
-                String middle_name = rs.getString("middle_name");
-                String last_name = rs.getString("last_name");
-                String address = rs.getString("address");
-                String zipcode = rs.getString("postcode");
-                String city = rs.getString("city");
-                String email = rs.getString("email");
-                String phone = rs.getString("phone");
-
-                Passenger passenger = new Passenger(first_name, middle_name, last_name, address, zipcode, city, country, email, phone, id);
-
-                passengers.add(passenger);
-            }
+            checkNullOrNext(passengers, rs);
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
         return passengers;
+    }
+
+    private void checkNullOrNext(List<Passenger> passengers, ResultSet rs) throws SQLException {
+        while (rs != null && rs.next()) {
+            int id = rs.getInt("passenger_id");
+
+            int countryId = rs.getInt("country_id");
+            String countryCode = rs.getString("country_code");
+            String countryName = rs.getString("country_name");
+
+            Country country = new Country(countryCode, countryName, countryId);
+
+            String first_name = rs.getString("first_name");
+            String middle_name = rs.getString("middle_name");
+            String last_name = rs.getString("last_name");
+            String address = rs.getString("address");
+            String zipcode = rs.getString("postcode");
+            String city = rs.getString("city");
+            String email = rs.getString("email");
+            String phone = rs.getString("phone");
+
+            Passenger passenger = new Passenger(first_name, middle_name, last_name, address, zipcode, city, country, email, phone, id);
+
+            passengers.add(passenger);
+        }
     }
 
     /**

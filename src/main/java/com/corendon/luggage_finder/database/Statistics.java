@@ -54,20 +54,7 @@ public class Statistics {
                 + ") AS result_table "
                 + "GROUP BY result_table.name;";
 
-        Map<String, Number> resultMap = new HashMap<>();
-
-        try (ResultSet rs = jdbc.executeSelectQuery(query, fromDate, toDate)) {
-            while (rs != null && rs.next()) {
-                String name = rs.getString("name").toString();
-                int amount = rs.getInt("count");
-
-                resultMap.put(name, amount);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-
-        return resultMap;
+        return getStringNumberMap(fromDate, toDate, query);
     }
 
     /**
@@ -85,11 +72,15 @@ public class Statistics {
                 + "WHERE luggages.created_timestamp >= ? AND luggages.created_timestamp <= ? "
                 + "GROUP BY name;";
 
+        return getStringNumberMap(fromDate, toDate, query);
+    }
+
+    private Map<String, Number> getStringNumberMap(Date fromDate, Date toDate, String query) {
         Map<String, Number> resultMap = new HashMap<>();
 
         try (ResultSet rs = jdbc.executeSelectQuery(query, fromDate, toDate)) {
             while (rs != null && rs.next()) {
-                String name = rs.getString("name").toString();
+                String name = rs.getString("name");
                 int amount = rs.getInt("count");
 
                 resultMap.put(name, amount);
@@ -100,20 +91,6 @@ public class Statistics {
 
         return resultMap;
     }
-
-//    public Map<String, Number> generateLuggagesInsuranceRapport(Date fromDate, Date toDate) {
-//        String query = "SELECT COUNT(luggages.id) AS count, insurance_companies.name AS name "
-//                + "FROM luggages "
-//                + "INNER JOIN insurance_companies ON luggages.insurance_company_id = insurance_companies.id "
-//                + "WHERE luggages.created_timestamp >= ? AND luggages.created_timestamp <= ? "
-//                + "GROUP BY name;";
-//        
-//        Map<String, Number> resultMap = new HashMap<>();
-//        
-//        try(ResultSet rs = jdbc.executeSelectQuery(query, fromDate, toDate)){
-//            while ()
-//        }
-//    }
 
     /**
      * Generates an hashmap containing the amount of luggages added per day.

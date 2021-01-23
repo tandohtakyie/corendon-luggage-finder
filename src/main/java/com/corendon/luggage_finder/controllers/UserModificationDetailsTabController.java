@@ -103,13 +103,11 @@ public class UserModificationDetailsTabController implements Initializable {
         emailTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> ov, Boolean oldValue, Boolean newValue) {
-                if (!newValue) {
+                if (!Boolean.TRUE.equals(newValue)) {
                     String emailText = emailTextField.getText();
 
                     if (!emailText.matches(".+@.+\\..+") || emailText.contains(" ")) {
                         emailTextField.setStyle("-fx-text-inner-color: red;");
-
-                        // TODO popup
                     }
                 } else {
                     emailTextField.setStyle("-fx-text-inner-color: black;");
@@ -157,7 +155,7 @@ public class UserModificationDetailsTabController implements Initializable {
                 || employmentDatePicker.getValue() != null
                 || birthDatePicker.getValue() != null)) {
 
-            System.out.println("Not saved");
+            System.err.println("Not saved");
             return;
         }
 
@@ -254,7 +252,6 @@ public class UserModificationDetailsTabController implements Initializable {
 
         jobLocationChoiceBox.setValue(selectedUser.getDepartmentLocation().getName());
         usernameTextField.setText(selectedUser.getUsername());
-        //usernameTextField.setDisable(true);
 
         if (selectedUser.getImage() != null) {
             Image img = new Image(selectedUser.getImage());

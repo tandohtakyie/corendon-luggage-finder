@@ -31,24 +31,6 @@ public class StatusHistoryTable extends DatabaseTable<StatusHistory> {
      */
     @Override
     public List<StatusHistory> getAll(int size) {
-        /*String query = "select luggage_id , status_id from statuses_history limit ?;";
-        
-        List<StatusHistory> history = new ArrayList<>();
-        
-        try(ResultSet rs = getJdbc().executeSelectQuery(query, id)){
-            while (rs != null && rs.next()){
-                int luggage_id = rs.getString("luggage_id");
-                int status_id = rs.getInt("status_id");
-                
-                Status status = new Status(luggage_id,status_id);
-                StatusHistory statusHistory = new StatusHistory(id,status);
-                
-                history.add(statusHistory);
-            } catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        }*/
-
         return null;
     }
 

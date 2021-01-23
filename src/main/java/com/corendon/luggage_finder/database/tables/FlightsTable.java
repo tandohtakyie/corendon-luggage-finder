@@ -7,8 +7,6 @@
 package com.corendon.luggage_finder.database.tables;
 
 import com.corendon.luggage_finder.implementables.DatabaseTable;
-import com.corendon.luggage_finder.model.Airport;
-import com.corendon.luggage_finder.model.Country;
 import com.corendon.luggage_finder.model.Flight;
 
 import java.sql.ResultSet;

@@ -42,6 +42,9 @@ public final class Excel {
     private static final int COLUMN_PASSENGER_AND_CITY = 12;
     private static final int COLUMN_OTHER_CHARACTERISTICS = 13;
 
+    private Excel() {
+    }
+
     /**
      * Reads a .xlsx file and outputs a lists of {@link Luggage}s.
      *
@@ -115,7 +118,6 @@ public final class Excel {
             }
         }
 
-        // TODO fix batch query
         for (Object[] param : params) {
             if (param == null)
                 break;
@@ -124,13 +126,6 @@ public final class Excel {
         }
 
         return true;
-//        // converting to 2d array
-//        Object[][] paramsArray = new Object[params.size()][];
-//        for (int i = 0; i < params.size(); i++) {
-//            paramsArray[i] = params.get(i);
-//        }
-//
-//        return JDBC.getInstance().executeBatchQuery(query, paramsArray);
     }
 
     /**
@@ -264,7 +259,7 @@ public final class Excel {
 
         // weight
         String rawWeight = row.getCell(COLUMN_WEIGHT).getStringCellValue();
-        String parsedWeight = rawWeight.replaceAll("kg", "");
+        String parsedWeight = rawWeight.replace("kg", "");
         params[14] = Utils.parseInt(parsedWeight);
 
         params[15] = getCellValue(row, COLUMN_OTHER_CHARACTERISTICS);

@@ -60,7 +60,6 @@ public class UserModificationPermissionTabController implements Initializable {
         view.setSelected(true);
         
         homeScreen.getChildren().add(view);
-        //homeScreen.getChildren().add(new CheckBoxTreeItem<>("Bewerken"));
         screens.getChildren().add(homeScreen);
         /* --- End Home Screen --- */
 
@@ -71,8 +70,7 @@ public class UserModificationPermissionTabController implements Initializable {
         view.setSelected(true);
         
         searchScreen.getChildren().add(view);
-        //searchScreen.getChildren().add(new CheckBoxTreeItem<>("Bewerken"));
-        screens.getChildren().add(searchScreen);
+         screens.getChildren().add(searchScreen);
         /* --- End Search Screen --- */
 
         /* --- Register Screen --- */
@@ -147,7 +145,7 @@ public class UserModificationPermissionTabController implements Initializable {
 
     @FXML
     void onSaveButtonAction(ActionEvent event) {
-        System.out.println("Saved");
+        System.err.println("Saved");
     }
 
     public void setSelectedUser(User selectedUser) {

@@ -15,18 +15,27 @@ import static org.mockito.Mockito.*;
 
 public class LuggageFinderASVTest {
 
+    /**
+     * before class is set up
+     */
     @BeforeClass
     public static void setUpClass() {
     }
-
+    /**
+     * after class is set up
+     */
     @AfterClass
     public static void tearDownClass() {
     }
-
+    /**
+     * before class is set up
+     */
     @Before
     public void setUp() {
     }
-
+    /**
+     * after class is set up
+     */
     @After
     public void tearDown() {
 
@@ -34,7 +43,8 @@ public class LuggageFinderASVTest {
 
     @Test
     public void loginManager(){
-        String username = "sjors", password = "wachtwoord";
+        String username = "sjors";
+        String password = "wachtwoord";
 
         // the information of the user with the manager's function.
         User expectedResult = new User(
@@ -55,7 +65,7 @@ public class LuggageFinderASVTest {
         // passing in the test values for validation
         when(usersTable.login(username, password)).thenReturn(expectedResult);
         usersTable.login(username,password);
-        System.out.println("Manager logs in successfully \nNavigate to statistics");
+        System.err.println("Manager logs in successfully \nNavigate to statistics");
 
         // verifying
         verify(usersTable, Mockito.times(1)).login(username,password);
