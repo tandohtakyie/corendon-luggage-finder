@@ -137,10 +137,11 @@ public final class JDBC {
      * @param params the params
      * @return if the query succeeded
      */
-    public boolean executeUpdateQuery(String query, Object... params) {
+    public boolean executeUpdateQuery(String query, Object... params) throws SQLException {
+        PreparedStatement stmt = null;
         try {
-            // creating sql query and setting parameters   
-            PreparedStatement stmt = connection.prepareStatement(query);
+            // creating sql query and setting parameters
+            stmt = connection.prepareStatement(query);
 
             for (int i = 0; i < params.length; i++) {
                 stmt.setObject(i + 1, params[i]);
@@ -152,6 +153,10 @@ public final class JDBC {
             ex.printStackTrace();
 
             return false;
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
         }
 
     }
@@ -164,10 +169,11 @@ public final class JDBC {
      * @param params the parameters
      * @return the resultset
      */
-    public ResultSet executeSelectQuery(String query, Object... params) {
+    public ResultSet executeSelectQuery(String query, Object... params) throws SQLException {
+        PreparedStatement stmt = null;
         try {
             // creating sql query and setting parameters
-            PreparedStatement stmt = connection.prepareStatement(query);
+             stmt = connection.prepareStatement(query);
 
             for (int i = 0; i < params.length; i++) {
                 stmt.setObject(i + 1, params[i]);
@@ -178,6 +184,10 @@ public final class JDBC {
             ex.printStackTrace();
 
             return null;
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
         }
     }
 
@@ -188,9 +198,10 @@ public final class JDBC {
      * @param batchParms The params per query.
      * @return If the query inserted all batchParams.
      */
-    public boolean executeBatchQuery(String query, Object[][] batchParms) {
+    public boolean executeBatchQuery(String query, Object[][] batchParms) throws SQLException {
+        PreparedStatement stmt = null;
         try {
-            PreparedStatement stmt = connection.prepareStatement(query);
+             stmt = connection.prepareStatement(query);
 
             for (Object[] batchParam : batchParms) {
                 for (int i = 0; i < batchParam.length; i++) {
@@ -205,6 +216,10 @@ public final class JDBC {
             e.printStackTrace();
 
             return false;
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
         }
     }
 
@@ -218,7 +233,7 @@ public final class JDBC {
      * @throws SQLException
      * @throws URISyntaxException
      */
-    public boolean runSqlScript(String fileName) throws IOException, URISyntaxException {
+    public boolean runSqlScript(String fileName) throws IOException, URISyntaxException, SQLException {
         String url = String.format("/sql/%s", fileName);
         URI uri = getClass().getResource(url).toURI();
 

@@ -205,10 +205,6 @@ public class RegisterController implements Initializable {
     void onSaveButtonAction(ActionEvent event) {
         Luggage luggage = createLuggage();
 
-        if (luggage == null) {
-            return;
-        }
-
         if (luggage.getLuggagetType() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
 

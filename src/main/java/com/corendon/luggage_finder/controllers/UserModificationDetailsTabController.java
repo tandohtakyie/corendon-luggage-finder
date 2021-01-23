@@ -163,45 +163,47 @@ public class UserModificationDetailsTabController implements Initializable {
         UsersTable usersTable = new UsersTable();
 
         // Disgustingly nice
-        String username = usernameTextField.getText().isEmpty()
-                ? selectedUser.getUsername() : usernameTextField.getText();
-        String firstName = firstNameTextField.getText().isEmpty()
-                ? selectedUser.getFirstName() : firstNameTextField.getText();
-        String namePreposition = prepositionTextField.getText();
-        String surname = surnameTextField.getText().isEmpty()
-                ? selectedUser.getSurname() : surnameTextField.getText();
-        Date birthDate = birthDatePicker.getValue() == null
-                ? selectedUser.getBirthDate() : Utils.localDateToDate(birthDatePicker.getValue());
-        String email = emailTextField.getText().isEmpty()
-                ? selectedUser.getEmail() : emailTextField.getText();
-        Function function = functions.get(jobFunctionChoiceBox.getSelectionModel().getSelectedIndex());
-        Date employmentDate = employmentDatePicker.getValue() == null
-                ? selectedUser.getEmploymentDate() : Utils.localDateToDate(employmentDatePicker.getValue());
-        Country country = countries.get(jobLocationChoiceBox.getSelectionModel().getSelectedIndex());
-        String password = passwordField.getText().isEmpty()
-                ? selectedUser.getPassword() : passwordField.getText();
-        boolean passwordReset = updatePasswordCheckBox.isSelected();
-        // End chunk text
+        if(selectedUser != null){
+            String username = usernameTextField.getText().isEmpty()
+                    ? selectedUser.getUsername() : usernameTextField.getText();
+            String firstName = firstNameTextField.getText().isEmpty()
+                    ? selectedUser.getFirstName() : firstNameTextField.getText();
+            String namePreposition = prepositionTextField.getText();
+            String surname = surnameTextField.getText().isEmpty()
+                    ? selectedUser.getSurname() : surnameTextField.getText();
+            Date birthDate = birthDatePicker.getValue() == null
+                    ? selectedUser.getBirthDate() : Utils.localDateToDate(birthDatePicker.getValue());
+            String email = emailTextField.getText().isEmpty()
+                    ? selectedUser.getEmail() : emailTextField.getText();
+            Function function = functions.get(jobFunctionChoiceBox.getSelectionModel().getSelectedIndex());
+            Date employmentDate = employmentDatePicker.getValue() == null
+                    ? selectedUser.getEmploymentDate() : Utils.localDateToDate(employmentDatePicker.getValue());
+            Country country = countries.get(jobLocationChoiceBox.getSelectionModel().getSelectedIndex());
+            String password = passwordField.getText().isEmpty()
+                    ? selectedUser.getPassword() : passwordField.getText();
+            boolean passwordReset = updatePasswordCheckBox.isSelected();
+            // End chunk text
 
-        if (selectedUser != null) {
-            selectedUser.setFirstName(firstName);
-            selectedUser.setNamePreposition(namePreposition);
-            selectedUser.setSurname(surname);
-            selectedUser.setBirthDate(birthDate);
-            selectedUser.setFunction(function);
-            selectedUser.setEmail(email);
-            selectedUser.setEmploymentDate(employmentDate);
-            selectedUser.setDepartmentLocation(country);
-            selectedUser.setUsername(username);
-            selectedUser.setPassword(password);
-            selectedUser.setImage(imageStream);
-            selectedUser.setResetPassword(passwordReset);
+            if (selectedUser != null) {
+                selectedUser.setFirstName(firstName);
+                selectedUser.setNamePreposition(namePreposition);
+                selectedUser.setSurname(surname);
+                selectedUser.setBirthDate(birthDate);
+                selectedUser.setFunction(function);
+                selectedUser.setEmail(email);
+                selectedUser.setEmploymentDate(employmentDate);
+                selectedUser.setDepartmentLocation(country);
+                selectedUser.setUsername(username);
+                selectedUser.setPassword(password);
+                selectedUser.setImage(imageStream);
+                selectedUser.setResetPassword(passwordReset);
 
-            usersTable.update(selectedUser);
-        } else {
-            User newUser = new User(username, firstName, namePreposition, surname, birthDate, email, function, employmentDate, country, password, imageStream, passwordReset, 0);
+                usersTable.update(selectedUser);
+            } else {
+                User newUser = new User(username, firstName, namePreposition, surname, birthDate, email, function, employmentDate, country, password, imageStream, passwordReset, 0);
 
-            usersTable.insert(newUser);
+                usersTable.insert(newUser);
+            }
         }
 
         NavigationController.getInstance().changeContentNode("user_search.fxml");
