@@ -25,6 +25,15 @@ public class Passenger extends DatabaseEntry {
     private Country country;
     private String email;
     private String phone;
+
+    public int getPassengerID() {
+        return passengerID;
+    }
+
+    public void setPassengerID(int passengerID) {
+        this.passengerID = passengerID;
+    }
+
     private int passengerID;
 
     public Passenger(int id){

@@ -1,34 +1,19 @@
 package com.corendon.luggage_finder;
 
-import com.corendon.luggage_finder.controllers.RegisterController;
 import com.corendon.luggage_finder.database.tables.LuggagesTable;
 import com.corendon.luggage_finder.database.tables.UsersTable;
 import com.corendon.luggage_finder.model.*;
-import javafx.collections.ObservableList;
 import org.junit.*;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.stubbing.answers.DoesNothing;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class LuggageFinderASVTest {
-
-    private Passenger selectedPassenger;
-
-    private LuggagesTable luggagesTable = new LuggagesTable();
-
-    private ObservableList<Luggage> resultsList;
 
     @BeforeClass
     public static void setUpClass() {
@@ -143,56 +128,10 @@ public class LuggageFinderASVTest {
 
         // label
         Label label = new Label(labelText, flight);
-        selectedPassenger = new Passenger(1);
+       Passenger selectedPassenger = new Passenger(1);
 
         return new Luggage(registrationId, date, airport, type, brand, label,
             status, width, length, height, weight, selectedPassenger,
             characteristics, primaryColor, secondaryColor, insurance);
     }
-//
-//    @Test
-//    public void searchLuggageTest() throws ParseException {
-//        String query = "35456";
-//
-//
-//        LuggageType type = new LuggageType("Koffer", 1);
-//
-//        Color primaryColor = new Color("Geel",5555,25);
-//
-//        Color secondaryColor = new Color("Blue",6666,26);
-//
-//        Brand brand = new Brand("LV",1);
-//
-//        Insurance insurance = new Insurance("ditzo", 1);
-//
-//        String dateStr = "2010-01-04 01:32:27 UTC";
-//        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-//        Date date = format.parse(dateStr);
-//
-//
-//
-//        List<Luggage> luggageList = luggagesTable.search(query, date, date,
-//                type, primaryColor, secondaryColor, brand, 12, 12,
-//                insurance, 500);
-//
-//
-//        // Configuring Mockito to mock the LuggagesTable class
-//        LuggagesTable luggagesTable = Mockito.mock(LuggagesTable.class);
-//
-//// passing in the test values for validation and returning true if success
-//        when(luggagesTable.search(query, date, date,
-//                type, primaryColor, secondaryColor, brand, 12, 12,
-//                insurance, 500)).thenReturn(luggageList);
-//
-//        resultsList.setAll(luggageList);
-//
-//        // verifying
-//        verify(luggagesTable, Mockito.times(1)).search(query, date, date,
-//                type, primaryColor, secondaryColor, brand, 12, 12,
-//                insurance, 500);
-//
-//    }
-
-
-
 }
