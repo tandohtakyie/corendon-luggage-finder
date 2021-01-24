@@ -20,7 +20,6 @@ public final class JDBC {
     private static JDBC instance = null;
 
     private static final String DEFAULT_USERNAME = "root";
-    private static final String DEFAULT_PASSWORD = "admin";
     private static final String DEFAULT_DATABASE = "corendon";
     private static final String DEFAULT_HOST = "localhost";
     private static final int DEFAULT_PORT = 3306;
@@ -55,7 +54,7 @@ public final class JDBC {
      * @return If successfully connected.
      */
     public boolean connect() {
-        return connect(DEFAULT_USERNAME, DEFAULT_PASSWORD, true);
+        return connect(DEFAULT_USERNAME, "admin", true);
     }
 
     /**

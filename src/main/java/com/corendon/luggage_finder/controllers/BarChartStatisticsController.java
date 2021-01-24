@@ -11,6 +11,7 @@ import com.corendon.luggage_finder.database.Statistics;
 import com.corendon.luggage_finder.database.tables.LuggagesTable;
 import com.corendon.luggage_finder.excel.Excel;
 import com.corendon.luggage_finder.model.Luggage;
+import com.mysql.cj.log.Log;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -149,7 +150,9 @@ public class BarChartStatisticsController implements Initializable {
         try {
             Excel.toExcel(luggages, file);
         } catch (IOException e) {
-            e.printStackTrace();
+
+            System.err.println(e.getMessage());
+
         }
     }
 

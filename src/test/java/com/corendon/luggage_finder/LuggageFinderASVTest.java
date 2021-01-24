@@ -44,7 +44,6 @@ public class LuggageFinderASVTest {
     @Test
     public void loginManager(){
         String username = "sjors";
-        String password = "wachtwoord";
 
         // the information of the user with the manager's function.
         User expectedResult = new User(
@@ -63,12 +62,12 @@ public class LuggageFinderASVTest {
         UsersTable usersTable = Mockito.mock(UsersTable.class);
 
         // passing in the test values for validation
-        when(usersTable.login(username, password)).thenReturn(expectedResult);
-        usersTable.login(username,password);
+        when(usersTable.login(username, "wachtwoord")).thenReturn(expectedResult);
+        usersTable.login(username,"wachtwoord");
         System.err.println("Manager logs in successfully \nNavigate to statistics");
 
         // verifying
-        verify(usersTable, Mockito.times(1)).login(username,password);
+        verify(usersTable, Mockito.times(1)).login(username,"wachtwoord");
     }
 
     @Test
