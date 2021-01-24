@@ -101,7 +101,7 @@ public final class JDBC {
 
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
 
             return false;
         }

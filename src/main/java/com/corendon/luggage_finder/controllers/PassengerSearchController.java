@@ -95,7 +95,7 @@ public class PassengerSearchController implements Initializable {
             Scene scene = new Scene(pmParent, mainStage.getWidth(), mainStage.getHeight());
             mainStage.setScene(scene);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 

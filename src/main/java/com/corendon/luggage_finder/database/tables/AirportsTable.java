@@ -97,7 +97,7 @@ public class AirportsTable extends DatabaseTable<Airport> {
                 airport = new Airport(name, country, timezone, daylightSaving, id);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
 
         return airport;

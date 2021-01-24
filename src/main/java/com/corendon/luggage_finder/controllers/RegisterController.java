@@ -251,7 +251,7 @@ public class RegisterController implements Initializable {
         try {
             Excel.fromExcel(file);
         } catch (IOException | ParseException | SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 
