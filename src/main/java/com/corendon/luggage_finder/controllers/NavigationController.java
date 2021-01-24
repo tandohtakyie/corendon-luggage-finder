@@ -202,7 +202,7 @@ public class NavigationController implements Initializable {
         try {
             parent = loader.load();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
 
             return null;
         }

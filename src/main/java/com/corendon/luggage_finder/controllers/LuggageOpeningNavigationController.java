@@ -68,7 +68,7 @@ public class LuggageOpeningNavigationController implements Initializable {
                 loiController.updateLuggageTextFields();
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
     }
 
@@ -90,7 +90,7 @@ public class LuggageOpeningNavigationController implements Initializable {
                 controller.setLuggage(selectedLuggage);
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
     }
 }

@@ -115,7 +115,7 @@ public final class JDBC {
             try {
                 connection.close();
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                System.err.println(ex.getMessage());
             }
         }
     }
@@ -141,7 +141,7 @@ public final class JDBC {
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
 
             return false;
         } finally {
@@ -172,7 +172,7 @@ public final class JDBC {
 
             return stmt.executeQuery();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
 
             return null;
         } finally {

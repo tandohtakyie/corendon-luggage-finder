@@ -48,7 +48,7 @@ public class ColorsTable extends DatabaseTable<Color> {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return colors;

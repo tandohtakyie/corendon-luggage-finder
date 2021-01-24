@@ -44,7 +44,7 @@ public class StatusesTable extends DatabaseTable<Status> {
                 statuses.add(status);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return statuses;

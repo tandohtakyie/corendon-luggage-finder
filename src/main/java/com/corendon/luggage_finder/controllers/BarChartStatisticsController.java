@@ -150,9 +150,7 @@ public class BarChartStatisticsController implements Initializable {
         try {
             Excel.toExcel(luggages, file);
         } catch (IOException e) {
-
             System.err.println(e.getMessage());
-
         }
     }
 

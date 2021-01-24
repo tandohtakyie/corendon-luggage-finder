@@ -45,7 +45,7 @@ public class LuggageTypesTable extends DatabaseTable<LuggageType> {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return luggageTypes;

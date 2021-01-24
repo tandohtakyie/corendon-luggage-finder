@@ -56,7 +56,7 @@ public class LabelsTable extends DatabaseTable<Label> {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
         return labels;
     }

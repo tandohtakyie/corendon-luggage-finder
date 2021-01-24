@@ -38,7 +38,7 @@ public class InsuranceCompaniesTable extends DatabaseTable<Insurance> {
 
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
         return insurances;
     }

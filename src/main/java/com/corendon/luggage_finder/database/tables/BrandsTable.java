@@ -44,7 +44,7 @@ public class BrandsTable extends DatabaseTable<Brand> {
                 brands.add(brand);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return brands;

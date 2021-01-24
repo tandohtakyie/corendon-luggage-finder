@@ -126,7 +126,7 @@ public class LuggagesTable extends DatabaseTable<Luggage> {
                 luggages.add(luggage);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return luggages;
@@ -145,7 +145,7 @@ public class LuggagesTable extends DatabaseTable<Luggage> {
                 luggages.add(luggage);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return luggages;
@@ -163,7 +163,7 @@ public class LuggagesTable extends DatabaseTable<Luggage> {
                 luggage = parseResultSet(rs);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return luggage;
@@ -188,7 +188,7 @@ public class LuggagesTable extends DatabaseTable<Luggage> {
                 luggages.add(luggage);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return luggages;

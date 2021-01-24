@@ -59,7 +59,7 @@ public class StatusHistoryTable extends DatabaseTable<StatusHistory> {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return history;

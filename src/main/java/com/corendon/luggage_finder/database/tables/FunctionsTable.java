@@ -42,7 +42,7 @@ public class FunctionsTable extends DatabaseTable<Function> {
                 functions.add(function);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return functions;

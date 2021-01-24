@@ -288,7 +288,7 @@ public class RegisterController implements Initializable {
             emailTextField.setText(selectedPassenger.getEmail());
 
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
     }
 

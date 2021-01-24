@@ -46,7 +46,7 @@ public class FlightsTable extends DatabaseTable<Flight> {
                 flights.add(flight);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
 
         }
         return flights;

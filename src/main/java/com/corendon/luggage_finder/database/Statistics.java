@@ -86,7 +86,7 @@ public class Statistics {
                 resultMap.put(name, amount);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return resultMap;
@@ -115,7 +115,7 @@ public class Statistics {
                 resultMap.put(date, amount);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return resultMap;
@@ -144,7 +144,7 @@ public class Statistics {
                 resultMap.put(date, amount);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return resultMap;
@@ -173,7 +173,7 @@ public class Statistics {
                 resultMap.put(date, amount);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return resultMap;

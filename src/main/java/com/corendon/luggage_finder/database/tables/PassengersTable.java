@@ -60,7 +60,7 @@ public class PassengersTable extends DatabaseTable<Passenger> {
                 passenger = new Passenger(first_name, middle_name, last_name, address, zipcode, city, country, email, phone, id);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return passenger;
@@ -96,7 +96,7 @@ public class PassengersTable extends DatabaseTable<Passenger> {
         try (ResultSet rs = getJdbc().executeSelectQuery(query, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString, searchString)) {
             checkNullOrNext(passengers, rs);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return passengers;
@@ -123,7 +123,7 @@ public class PassengersTable extends DatabaseTable<Passenger> {
             checkNullOrNext(passengers, rs);
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return passengers;

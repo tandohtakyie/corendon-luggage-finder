@@ -79,7 +79,7 @@ public class UsersTable extends DatabaseTable<User> {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return null;
@@ -145,7 +145,7 @@ public class UsersTable extends DatabaseTable<User> {
                 users.add(user);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return users;
@@ -203,7 +203,7 @@ public class UsersTable extends DatabaseTable<User> {
                 users.add(user);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return users;

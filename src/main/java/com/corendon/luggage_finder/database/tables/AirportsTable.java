@@ -59,7 +59,7 @@ public class AirportsTable extends DatabaseTable<Airport> {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return airports;

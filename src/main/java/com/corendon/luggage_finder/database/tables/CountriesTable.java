@@ -43,7 +43,7 @@ public class CountriesTable extends DatabaseTable<Country> {
                 countries.add(country);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println(ex.getMessage());
         }
 
         return countries;
